@@ -1,0 +1,4 @@
+com\swz\service\CheckGroupService.class
+com\swz\service\CheckItemService.class
+com\swz\service\OrderSettingService.class
+com\swz\service\SetmealService.class

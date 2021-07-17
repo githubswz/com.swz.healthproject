@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swz.dao.OrderDao">
+    <select id="findStemealByDate" resultType="int">
+        select count(id)
+        from t_order
+        where date_format(orderDate, '%Y-%m-%d') = date_format(#{date}, '%Y-%m-%d')
+          and setmeal_id = #{setmealId}
+          and member_id = #{memberId}
+    </select>
+
+    <insert id="add" parameterType="com.swz.pojo.Order" useGeneratedKeys="true" keyProperty="id">
+        insert into t_order(member_id, orderDate, orderStatus, setmeal_id, orderType)
+        values (#{memberId},
+                #{orderDate},
+                #{orderStatus},
+                #{setmealId},
+                #{orderType})
+    </insert>
+
+    <select id="findById" parameterType="int" resultType="map">
+        select m.name as  member,s.name as setmeal,o.orderDate as orderDate,o.orderType as orderType
+        from
+            t_order o,
+            t_member m,
+            t_setmeal s
+        where o.member_id=m.id and o.setmeal_id=s.id and o.id=#{id}
+    </select>
+
+</mapper>

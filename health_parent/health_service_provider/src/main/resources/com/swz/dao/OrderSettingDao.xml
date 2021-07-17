@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swz.dao.OrderSettingDao">
+
+    <insert id="add" parameterType="com.swz.pojo.OrderSetting">
+        insert into t_ordersetting(orderDate, number)
+        values (#{orderDate}, #{number});
+    </insert>
+
+    <select id="find" parameterType="java.util.Date" resultType="long">
+        select count(*)
+        from t_ordersetting
+        where orderDate = #{orderDate}
+    </select>
+
+    <update id="update" parameterType="com.swz.pojo.OrderSetting">
+        update t_ordersetting
+        set number=#{number}
+        where orderDate = #{orderDate}
+    </update>
+
+    <select id="findDateInfo" parameterType="java.util.Date" resultType="com.swz.pojo.OrderSetting">
+        select *
+        from t_ordersetting
+        where date_format(orderDate, '%Y-%m') = date_format(#{orderDate}, '%Y-%m')
+    </select>
+
+    <update id="updateReservationById">
+        update t_ordersetting
+        set reservations = #{reservation}
+        where orderDate = #{date}
+    </update>
+
+    <select id="findReservationByDate" parameterType="java.util.Date" resultType="int">
+        select reservations
+        from t_ordersetting
+        where date_format(orderDate, '%Y-%m-%d') = date_format(#{orderDate}, '%Y-%m-%d')
+    </select>
+
+    <select id="findNumberByDate" parameterType="java.util.Date" resultType="int">
+        select number
+        from t_ordersetting
+        where date_format(orderDate, '%Y-%m-%d') = date_format(#{orderDate}, '%Y-%m-%d')
+    </select>
+
+</mapper>

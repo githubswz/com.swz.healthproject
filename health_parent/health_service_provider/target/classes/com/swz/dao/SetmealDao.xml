@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swz.dao.SetmealDao">
+
+    <!-- 使用主键生成策略-->
+    <insert id="add" parameterType="com.swz.pojo.Setmeal" useGeneratedKeys="true" keyProperty="id">
+        insert into t_setmeal(name, code, helpCode, sex, age, price, remark, attention, img)
+        values (#{name}, #{code}, #{helpCode}, #{sex}, #{age}, #{price}, #{remark}, #{attention}, #{img})
+    </insert>
+
+    <insert id="setSetmealAndCheckGroup" parameterType="hashmap">
+        insert into t_setmeal_checkgroup(setmeal_id, checkgroup_id)
+        values (#{setmeal_id}, #{checkgroup_id})
+    </insert>
+
+    <select id="findPage" parameterType="string" resultType="com.swz.pojo.Setmeal">
+        select * from t_setmeal
+        <if test="value!=null and value.length>0">
+            where code=#{value} or name=#{value} or helpCode = #{value}
+        </if>
+    </select>
+
+    <select id="findAll" resultType="com.swz.pojo.Setmeal">
+        select *
+        from t_setmeal
+    </select>
+
+    <resultMap id="findByIdResultMap" type="com.swz.pojo.Setmeal">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="code" property="code"></result>
+        <result column="helpCode" property="helpCode"></result>
+        <result column="sex" property="sex"></result>
+        <result column="age" property="age"></result>
+        <result column="price" property="price"></result>
+        <result column="remark" property="remark"></result>
+        <result column="attention" property="attention"></result>
+        <result column="img" property="img"></result>
+        <collection property="checkGroups" column="id" javaType="java.util.List"
+                    ofType="com.swz.pojo.CheckGroup" select="com.swz.dao.CheckGroupDao.findBySetmealId">
+        </collection>
+    </resultMap>
+
+    <select id="findById" parameterType="int" resultMap="findByIdResultMap">
+        select *
+        from t_setmeal
+        where id = #{id}
+    </select>
+
+    <delete id="deleteSetMealAndCheckGroup" parameterType="int">
+        delete
+        from t_setmeal_checkgroup
+        where setmeal_id = #{id}
+    </delete>
+
+    <delete id="delete" parameterType="int">
+        delete
+        from t_setmeal
+        where id = #{id}
+    </delete>
+
+</mapper>

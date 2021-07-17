@@ -1,0 +1,17 @@
+com\swz\pojo\OrderSetting.class
+com\swz\pojo\Menu.class
+com\swz\pojo\User.class
+com\swz\utils\POIUtils.class
+com\swz\entity\Result.class
+com\swz\constant\RedisConstant.class
+com\swz\entity\QueryPageBean.class
+com\swz\utils\QiniuUtils.class
+com\swz\pojo\Role.class
+com\swz\pojo\Setmeal.class
+com\swz\pojo\Order.class
+com\swz\pojo\Permission.class
+com\swz\entity\PageResult.class
+com\swz\pojo\CheckItem.class
+com\swz\constant\MessageConstant.class
+com\swz\pojo\Member.class
+com\swz\pojo\CheckGroup.class

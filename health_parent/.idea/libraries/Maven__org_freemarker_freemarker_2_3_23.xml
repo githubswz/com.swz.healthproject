@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.freemarker:freemarker:2.3.23">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../BaiduNetdiskDownload/资料-传智健康项目/day01/资源/repository_boot/org/freemarker/freemarker/2.3.23/freemarker-2.3.23.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../BaiduNetdiskDownload/资料-传智健康项目/day01/资源/repository_boot/org/freemarker/freemarker/2.3.23/freemarker-2.3.23-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../BaiduNetdiskDownload/资料-传智健康项目/day01/资源/repository_boot/org/freemarker/freemarker/2.3.23/freemarker-2.3.23-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
